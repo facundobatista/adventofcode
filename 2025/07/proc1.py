@@ -1,0 +1,46 @@
+test_lines = """
+.......S.......
+...............
+.......^.......
+...............
+......^.^......
+...............
+.....^.^.^.....
+...............
+....^.^...^....
+...............
+...^.^...^.^...
+...............
+..^...^.....^..
+...............
+.^.^.^.^.^...^.
+...............
+"""
+expected_test_result = 21
+
+SOURCE = "S"
+SPLITTER = "^"
+
+
+def run(lines):
+    beams = [lines[0].index(SOURCE)]
+
+    splits = 0
+    for line in lines[1:]:
+        print("====== loop!", beams)
+        splitters = {idx for idx, item in enumerate(line) if item == SPLITTER}
+        if not splitters:
+            continue
+        print("====== splitters", splitters)
+        newpositions = set()
+        for beam in beams:
+            if beam in splitters:
+                splits += 1
+                newpositions.add(beam - 1)
+                newpositions.add(beam + 1)
+            else:
+                newpositions.add(beam)
+        print("======== splits", splits)
+        beams = newpositions
+
+    return splits

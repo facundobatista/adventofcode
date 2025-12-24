@@ -9,7 +9,7 @@ What is Advent of Code? I wouldn't say it better than Eric Wastl, the author, in
 
 ## What is inside this repo?
 
-**Of course, all these are spoilers**
+**Of course, all these are spoilers!**
 
 These are all very dirty scripts, with a lot of prints, some of them possibly in Spanish. In some cases they don't even work ok (it's not that they all reach to the correct answer).
 
@@ -24,3 +24,18 @@ For 2025 I formalized "a runner" that receives the file to run and `test`/`real`
 ```
 
 You need to be inside a virtual environment with the requeriments specified in the corresponding file.
+
+
+## What about unit testing?
+
+Normally all this code is quick and dirty, hacked around until the proper response is given (which is validated in the site itself).
+
+However, there are cases where a particular small function needs to be tested to be used safely and not have a silly mistake there.
+
+There is support for that from 2025 onwards, you just pass `unit` to `run.py`. For an example where this is used, see `2025/01/proc2.py`.
+
+```
+../run.py proc2.py unit -v
+```
+
+(any extra parameters go to pytest)
